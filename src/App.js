@@ -1,5 +1,3 @@
-import logo from './logo.svg';
-
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
 
@@ -11,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <ItemListContainer greetings= { 'Aulex proximamente, esperalo.....' } />
+      <ItemListContainer greetings= { 'Mexico Magico proximamente, esperalo.....' } />
     </div>
   );
 }
