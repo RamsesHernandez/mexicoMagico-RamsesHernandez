@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.gridText {
+  background-color:#A9A9A9;
+  font-family:Arial;
+  filter:url(#goo);
+}
