@@ -1,20 +1,55 @@
-import ItemCount from "../ItemCount/ItemCount"
+import { useEffect, useState } from "react"
+import ItemList from '../ItemList/ItemList'
 
-const ItemListContainer = ({ greetings }) => {
-return(
-    <container>
-    <div>
-        {
-           <h1>{ greetings }</h1>
-        }
-    </div>
-    <br />
-    <br />
-    <div>
-        <ItemCount />
-    </div>
-    </container>
-)
+const productosIniciales = [
+    {
+        id: 1,
+        nombre: "Producto 1",
+        precio: 100
+    },
+    {
+        id: 2,
+        nombre: "Producto 2",
+        precio: 200
+    }
+]
+
+const ItemListContainer = () => {
+
+    const [productos, setProductos] = useState([])
+    const [loading, setLoading] = useState(true)
+
+    useEffect(() => {
+
+        console.log("Efecto")
+
+        const pedido = new Promise((res, rej) => {
+            setTimeout(() => {
+                res(productosIniciales)
+            }, 2000)
+        })
+
+        pedido.then((resultado) => {
+            setProductos(resultado)
+            setLoading(false)
+        })
+
+        pedido.catch((error) => {
+            console.log("Termino el pedido mal")
+        })
+
+    }, [])
+
+
+    if (loading) {
+        return (
+            <p>Cargando...</p>
+        )
+    } else {
+        return (
+            <ItemList productos={productos} />
+        )
+    }
+
 }
-
 export default ItemListContainer
